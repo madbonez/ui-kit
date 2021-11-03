@@ -5,6 +5,7 @@ import styles from 'rollup-plugin-styles'
 import sourcemaps from 'rollup-plugin-sourcemaps';
 import { terser } from "rollup-plugin-terser";
 import gzipPlugin from 'rollup-plugin-gzip'
+import typescript from '@rollup/plugin-typescript'
 
 export default [
     {
@@ -15,22 +16,19 @@ export default [
         output: {
             dir: 'dist',
             format: 'es',
-            compact: true,
-            sourcemap: true
+            sourcemap: true,
+            inputSourceMap: true,
+            plugins: [gzipPlugin()]
         },
         plugins: [
+            terser(),
             resolve(),
+            typescript({ sourceMap: true, inlineSources: true }),
+            sourcemaps(),
             styles({
+                sourceMap: true,
                 mode: ["inject", () => {}],
             }),
-            babel({
-                exclude: 'node_modules/**',
-                extensions: ['.js', '.jsx', '.ts', '.tsx', '.mjs'],
-                babelHelpers: 'bundled',
-                // inputSourceMap: true
-            }),
-            gzipPlugin(),
-            sourcemaps(),
         ]
     }
 ];

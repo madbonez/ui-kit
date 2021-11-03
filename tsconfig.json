@@ -8,8 +8,6 @@
     "jsxFragmentFactory": "Fragment",
     "allowJs": true,
     "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "removeComments": false,
-    "sourceMap": true
+    "allowSyntheticDefaultImports": true
   }
 }
