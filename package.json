@@ -1,0 +1,47 @@
+{
+  "name": "custom",
+  "version": "1.0.0",
+  "description": "Цель 1) Сборка каждого компонента в отдельном js модуле 2) Отдельный модуль с преактом 3) Нужен тайпскрипт 4) (*) дифференцированный бандл - сборка одним файлом для браузеров, которые не поддерживают модули. подключение полифила для web компонентов",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode=development --config webpack.config.js",
+    "prepare": "shx rm -rf ./dist && shx mkdir dist && shx cp src/index.html dist/index.html",
+    "rollup": "npm run prepare && rollup --config rollup.config.js",
+    "babel": "babel --config-file ./babel.config.json --extensions \".tsx\" --out-dir dist ./src/test/FolderTree.tsx",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "amalovmail",
+  "license": "ISC",
+  "dependencies": {
+    "@webcomponents/webcomponentsjs": "^2.6.0",
+    "preact": "^10.5.15",
+    "preact-custom-element": "^4.2.1",
+    "rollup-plugin-postcss": "^4.0.1",
+    "rollup-plugin-uglify": "^6.0.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@babel/preset-typescript": "^7.16.0",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "@rollup/plugin-typescript": "^8.3.0",
+    "@types/preact-custom-element": "^4.0.1",
+    "astroturf": "^1.0.0-beta.27",
+    "babel-loader": "^8.2.3",
+    "babel-preset-minify": "^0.5.1",
+    "rollup": "^2.59.0",
+    "rollup-plugin-cleanup": "^3.2.1",
+    "rollup-plugin-gzip": "^2.5.0",
+    "rollup-plugin-sourcemaps": "^0.6.3",
+    "rollup-plugin-styles": "^3.14.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "shx": "^0.3.3",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.4.4",
+    "webpack": "^5.61.0",
+    "webpack-cli": "^4.9.1"
+  }
+}
