@@ -1,4 +1,16 @@
-import { FolderTree } from './test/FolderTree';
-import register from 'preact-custom-element';
+/**
+ * * ---------------------------------------------
+ * Entry point for single bundle distributive. JS will be transpiled to es5 spec
+ * ---------------------------------------------
+ * POLYFILLS
+ * ---------------------------------------------
+ * Imports polyfill for Webcomponents api
+ * All ES features will be adding by Babel plugin (see rollup config)
+ */
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+import '@webcomponents/webcomponentsjs/custom-elements-es5-adapter'
+import '@webcomponents/webcomponentsjs/webcomponents-bundle'
 
-register(FolderTree, 'mw-info-block', [], {shadow: false});
+export * from './registry/folder-tree.component';
+export * from './registry/description.component';

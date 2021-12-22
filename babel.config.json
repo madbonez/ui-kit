@@ -1,0 +1,13 @@
+{
+  "sourceMaps": "both",
+  "comments": false,
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "entry",
+        "corejs": "3.8"
+      }
+    ]
+  ]
+}
