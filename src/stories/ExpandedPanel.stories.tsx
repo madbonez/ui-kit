@@ -8,7 +8,8 @@ export default {
     argTypes: {
         lang: {control: 'text'},
         whiteControls: {control: 'boolean'},
-        height: {control: 'number'}
+        height: {control: 'number'},
+        header: {control: 'text'}
     },
 };
 
@@ -22,6 +23,7 @@ export const Primary = Template.bind({});
 Primary.args = {
     lang: 'js',
     whiteControls: true,
+    header: 'test.component.ts',
     codeSnippet: `'use strict';
 /**
  * Origin repo https://github.com/mihneadb/node-directory-tree

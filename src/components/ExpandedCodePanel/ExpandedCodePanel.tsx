@@ -2,7 +2,7 @@
 import { Fragment, h, RefObject } from 'preact';
 import { useCallback, useRef, useState } from 'preact/hooks';
 import styles from './ExpandedCodePanel.scss';
-import { getAbsoluteHeight } from '../../utils/getAbsoluteHeight';
+import { getAbsoluteHeight } from '../../helpers/getAbsoluteHeight';
 import hljs from 'highlight.js';
 
 enum RollDirection {
@@ -15,6 +15,7 @@ export function ExpandedCodePanel(props: {
     lang: string,
     whiteControls: boolean,
     children: any,
+    header?: string,
 }) {
     let containerRef: RefObject<HTMLDivElement> = useRef(null);
     let contentContainerRef: RefObject<HTMLDivElement> = useRef(null);
@@ -26,7 +27,6 @@ export function ExpandedCodePanel(props: {
     const [contentScrollTop, setContentScrollTopValue] = useState(0);
 
     const onContentScroll = useCallback(() => {
-        console.log(containerRef.current.scrollTop)
         if ((containerRef.current.scrollTop + containerRef.current.offsetHeight) < containerRef.current.scrollHeight) {
             setContentScrollTopValue(containerRef.current.scrollTop);
         } else {
@@ -53,6 +53,7 @@ export function ExpandedCodePanel(props: {
             <style>
                 {styles}
             </style>
+            <div className='header'>{props.header}</div>
             <div style={{height: currentHeight}} className="container" onScroll={onContentScroll} ref={containerRef}>
                 <div ref={contentContainerRef}>
                     <pre><code className="hljs" dangerouslySetInnerHTML={{
@@ -60,13 +61,12 @@ export function ExpandedCodePanel(props: {
                     }}/></pre>
                 </div>
                 <span
-                    style={{bottom: '' + -contentScrollTop + 'px'}}
+                    style={{bottom: '' + (contentScrollTop + 5) + 'px'}}
                     onClick={unwrapContent}
                     className={`arrow pulse ${props.whiteControls ? 'white' : ''}`}
                 >
                     <div className="controls">
                         {rollDirection === RollDirection.UP ? <i className="gg-compress-v"/> : <i className="gg-arrows-v-alt"/>}
-                        <i className="gg-clipboard"/>
                     </div>
                 </span>
             </div>

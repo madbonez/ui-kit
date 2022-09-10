@@ -13,7 +13,14 @@ import fs from 'fs';
 
 export default [
     {
-        input: fs.readdirSync('./src/registry').map(fileName => `./src/registry/${fileName}`),
+        input: fs.readdirSync('./src/registry').map(fileName => {
+            const location = `./src/registry/${fileName}`;
+            if (fs.lstatSync(location).isDirectory()) {
+                return fs.readdirSync(location).map(subFile => `./src/registry/${fileName}/${subFile}`)
+            } else {
+                return [location]
+            }
+        }).flat(),
         manualChunks(id) {
             if (id.includes('node_modules') && id.includes('preact')) {
                 return 'preact';

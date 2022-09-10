@@ -25,12 +25,11 @@ pre {
     transform: scale(0.8);
 }
 
-
 .arrow {
     font-weight: bold;
     position: absolute;
-    left: calc(100% - 70px);
-    width: 60px;
+    left: calc(100% - 40px);
+    width: 30px;
     text-align: center;
     cursor: pointer;
     transition: top 1s ease-in-out;
@@ -48,7 +47,7 @@ pre {
     }
 
     30% {
-        transform: translate(0, 5px);
+        transform: translate(0, 2px);
     }
 
     100% {
@@ -66,4 +65,10 @@ pre {
     & i {
         margin-left: 10px;
     }
+}
+
+.header {
+    font-weight: bold;
+    text-decoration: underline;
+    padding-bottom: 3px;
 }

@@ -1,0 +1,12 @@
+.file-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 28px;
+
+  & > * {
+    margin-right: 5px;
+  }
+
+  margin-bottom: 5px;
+}
