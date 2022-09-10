@@ -12,7 +12,7 @@ module.exports = {
         config.module.rules.push({
           test: /\.scss$/,
             // to-string-loader injects styles  directly into webcomponents shadow dom
-          use: ['to-string-loader', 'css-loader', 'sass-loader'],
+          use: ['to-string-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
         });
 
         return config;

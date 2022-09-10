@@ -9,6 +9,7 @@ import sass from 'rollup-plugin-sass'
 import autoprefixer from 'autoprefixer'
 import postcss from 'postcss'
 import fs from 'fs';
+import tailwindcss from "tailwindcss";
 
 const packageJson = require('./package.json');
 
@@ -65,13 +66,16 @@ export default [
         plugins: [
             resolve(),
             commonjs({
-                            ignoreGlobal: true,
-                            sourceMap: true,
-                        }),
-            typescript({ sourceMap: true, inlineSources: true }),
+                ignoreGlobal: true,
+                sourceMap: true,
+            }),
+            typescript({sourceMap: true, inlineSources: true}),
             sourcemaps(),
             sass({
-                processor: css => postcss([autoprefixer])
+                processor: css => postcss([
+                    tailwindcss,
+                    autoprefixer
+                ])
                     .process(css)
                     .then(result => {
                         return {
@@ -97,7 +101,7 @@ export default [
                 sourceMap: true,
             }),
             terser(),
-            typescript({ sourceMap: true, inlineSources: true }),
+            typescript({sourceMap: true, inlineSources: true}),
             babel({
                 exclude: /@babel(?:\/|\\{1,2})runtime|core-js/,
                 extensions: ['.js', '.jsx', '.ts', '.tsx', '.mjs'],
