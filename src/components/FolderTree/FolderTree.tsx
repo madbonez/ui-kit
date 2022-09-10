@@ -1,13 +1,12 @@
 /** @jsx h */
 import { Fragment, h } from 'preact';
-import { useCallback, useState } from 'preact/hooks';
+import { Ref, useCallback, useRef, useState } from 'preact/hooks';
 import styles from './FolderTree.scss';
 import '../../registry/icons/ts-file-icon.component'
 import '../../registry/icons/folder-icon.component'
 import { FolderLine } from './FolderLine/FolderLine';
 import { FileLine } from './FileLine/FileLine';
 import { DraggableDivider } from './DraggableDivider/DraggableDivider';
-import { Ref, useRef } from 'preact/compat';
 import { FsTreeNode } from './interfaces/FsTreeNode';
 import { sortFsTree } from './helpers/sortFsTree'
 

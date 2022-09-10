@@ -1,8 +1,7 @@
 /** @jsx h */
 import { Fragment, h } from 'preact';
-import { useCallback, useState } from 'preact/hooks';
+import { Ref, useCallback, useEffect, useRef, useState } from 'preact/hooks';
 import styles from './DraggableDivider.scss';
-import { Ref, useEffect, useRef } from 'preact/compat';
 import { unFocus } from '../../../helpers/unFocus';
 
 export function DraggableDivider(props: {

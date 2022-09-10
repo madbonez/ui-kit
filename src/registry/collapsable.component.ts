@@ -1,4 +1,4 @@
 import register from 'preact-custom-element';
 import { Collapsable } from '../components/Collapsable/Collapsable';
 
-register(Collapsable, 'mw-collapsable', [], {shadow: true});
+register(Collapsable, 'mad-collapsable', [], {shadow: true});

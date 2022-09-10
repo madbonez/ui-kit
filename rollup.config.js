@@ -10,6 +10,8 @@ import autoprefixer from 'autoprefixer'
 import postcss from 'postcss'
 import fs from 'fs';
 
+const packageJson = require('./package.json');
+
 
 export default [
     {
@@ -22,6 +24,15 @@ export default [
             }
         }).flat(),
         manualChunks(id) {
+            if (id.includes('node_modules') && id.includes('preact-custom-element')) {
+                return 'preact-custom-element';
+            }
+            if (id.includes('node_modules') && id.includes('preact/compat/')) {
+                return 'preact-compat';
+            }
+            if (id.includes('node_modules') && id.includes('preact/hooks/')) {
+                return 'preact-hooks';
+            }
             if (id.includes('node_modules') && id.includes('preact')) {
                 return 'preact';
             }
@@ -38,7 +49,7 @@ export default [
             {
                 dir: 'dist/es6',
                 format: 'es',
-                entryFileNames: '[name]-v1.min.js',
+                entryFileNames: `[name]-${packageJson.version}.min.js`,
                 sourcemap: true,
                 inputSourceMap: true,
                 plugins: [terser(), gzipPlugin()],
@@ -47,7 +58,7 @@ export default [
             {
                 dir: 'dist/es6',
                 format: 'es',
-                entryFileNames: '[name]-v1.js',
+                entryFileNames: `[name]-${packageJson.version}.js`,
                 freeze: false
             }
         ],
