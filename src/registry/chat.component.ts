@@ -1,4 +1,4 @@
 import register from 'preact-custom-element';
-import { Chat } from '../chat/Chat';
+import { ChatApp } from '../chat/ChatApp';
 
-register(Chat, 'mad-chat', [], {shadow: true});
+register(ChatApp, 'mad-chat', [], {shadow: true});

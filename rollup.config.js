@@ -10,6 +10,8 @@ import autoprefixer from 'autoprefixer'
 import postcss from 'postcss'
 import fs from 'fs';
 import tailwindcss from "tailwindcss";
+import url from "@rollup/plugin-url";
+import * as path from "path";
 
 const packageJson = require('./package.json');
 
@@ -64,6 +66,10 @@ export default [
             }
         ],
         plugins: [
+            url({
+                publicPath: '/images/',
+                destDir: path.resolve(process.cwd(), 'dist/images')
+            }),
             resolve(),
             commonjs({
                 ignoreGlobal: true,
@@ -95,6 +101,10 @@ export default [
             inputSourceMap: true
         },
         plugins: [
+            url({
+                publicPath: '/images/',
+                destDir: path.resolve(process.cwd(), 'dist/images')
+            }),
             resolve(),
             commonjs({
                 ignoreGlobal: true,
