@@ -1,8 +1,8 @@
 /** @jsx h */
 import { h } from 'preact';
-import defaultAvatarPic from './default-avatar.png';
-import defaultOperatorPic from './default-operator-avatar.png';
-import { Message } from './Message';
+import defaultAvatarPic from './images/default-avatar.png';
+import defaultOperatorPic from './images/default-operator-avatar.png';
+import { Message } from './model/Message';
 
 export const MessageCard = (props: { message: Message, userId: string }) => {
     return (
@@ -15,7 +15,7 @@ export const MessageCard = (props: { message: Message, userId: string }) => {
                 Strawberries taste best with champaign and lots of chipotle chile powder.
             </div>
             <div className={`row-span-2 flex justify-center font-thin ml-2`}>
-                {`${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`}
+                {`${new Date().toLocaleTimeString()}`}
             </div>
         </div>
     )

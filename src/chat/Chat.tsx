@@ -1,17 +1,14 @@
 /** @jsx h */
 import { Fragment, h } from 'preact';
-import styles from './Chat.scss';
 import { MessageCard } from './MessageCard';
-import { Message } from './Message';
+import { Message } from './model/Message';
+import sentIcon from './images/sent-icon.png';
 
 export function Chat(props: {messages: Message[], userId: string}) {
     return (
         <Fragment>
-            <style>
-                {styles}
-            </style>
-            <div className="container">
-                <h1>Chat</h1>
+            <div className="container relative">
+                <h1 className={`bg-orange-400 p-4 text-blue-100 text-2xl font-medium`}>Поддержка</h1>
                 <div className={`p-0`}>
                     {
                         props.messages.map(message => (
@@ -21,10 +18,10 @@ export function Chat(props: {messages: Message[], userId: string}) {
                 </div>
                 <textarea
                     placeholder={'Сообщение'}
-                    className={`text-white bg-teal-900 w-full border border-blue-50 p-4 outline-4 outline-blue-700 focus-blue-700`}/>
+                    className={`text-white bg-teal-900 w-full border border-blue-50 p-4 outline-4 outline-blue-700 focus-blue-700 pr-14`}/>
                 <button
-                    className={`active:shadow-none bg-blue-200 p-4 shadow-xl hover:shadow-2xl transition-shadow duration-300`}>
-                    Send
+                    className={`absolute bottom-6 right-3 active:right-0 transition-all duration-100 flex justify-center items-center`}>
+                    <img src={sentIcon} className={`w-10 h-10 hover:w-11 hover:h-11 transition-all duration-500`}/>
                 </button>
             </div>
         </Fragment>

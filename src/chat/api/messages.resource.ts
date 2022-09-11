@@ -1,7 +1,7 @@
-import { Message } from '../Message';
+import { Message } from '../model/Message';
 
 export function getMessages(userId: string): Promise<Message[]> {
     return Promise.resolve(
-        require('../__mock__/get-messages.response.json')
+        require('./__mock__/get-messages.response.json')
     );
 }
