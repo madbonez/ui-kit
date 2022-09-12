@@ -16,7 +16,7 @@ export default {
 };
 
 const Template = (args) => (
-    <div style="width: 375px; height: 300px">
+    <div style="max-width: 375px; overflow: hidden">
         <ChatApp {...args}/>
     </div>
 );
